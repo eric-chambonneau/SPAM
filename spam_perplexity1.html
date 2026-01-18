@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SPAM - Support Prestations Assistance Maintenance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SPAM – Systèmes Polyvalents Aménagements Multiservices : bricolage particuliers, sous-traitance bâtiment, assistance informatique et vidéosurveillance."
+    />
+
+    <!-- Google Font tendance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- [web:1][web:7] -->
+
+    <style>
+      :root {
+        --primary: #1f4f7b;
+        --secondary: #f4f7fb;
+        --accent: #f7a500;
+        --dark: #0f172a;
+        --text: #1e293b;
+        --light: #ffffff;
+        --muted: #64748b;
+        --radius-lg: 18px;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+        --shadow-card: 0 14px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background: radial-gradient(
+          circle at top left,
+          #0f172a 0,
+          #020617 26%,
+          #020617 40%,
+          #020617 100%
+        );
+        /* fond global sombre pour effet “carte” claire */
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Layout principal avec carte centrale */
+      .page-shell {
+        min-height: 100vh;
+        padding: 1.8rem 1rem 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .page-inner {
+        width: 100%;
+        max-width: 1200px;
+        background: radial-gradient(
+          circle at top,
+          #f9fafb 0,
+          #e5ebf6 45%,
+          #dde5f3 100%
+        );
+        border-radius: 32px;
+        box-shadow: 0 40px 120px rgba(15, 23, 42, 0.6);
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+      }
+
+      /* Décor flou tendance */
+      .blur-pills::before,
+      .blur-pills::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(70px);
+        opacity: 0.6;
+        z-index: -1;
+      }
+      .blur-pills::before {
+        width: 260px;
+        height: 260px;
+        background: #38bdf8;
+        top: -60px;
+        left: -40px;
+      }
+      .blur-pills::after {
+        width: 260px;
+        height: 260px;
+        background: #f97316;
+        bottom: -60px;
+        right: -40px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: linear-gradient(
+          to bottom,
+          rgba(248, 250, 252, 0.95),
+          rgba(248, 250, 252, 0.85),
+          transparent
+        );
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.9rem 1.5rem 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .logo-mark {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          #fef9c3 0,
+          #f97316 45%,
+          #b91c1c 100%
+        );
+        box-shadow:
+          0 0 0 3px rgba(248, 250, 252, 0.8),
+          0 10px 25px rgba(15, 23, 42, 0.4);
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.92rem;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-weight: 500;
+        position: relative;
+        padding-bottom: 0.1rem;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.25rem;
+        width: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(to right, #38bdf8, #f97316);
+        transition: width 0.25s ease-out;
+      }
+
+      nav a:hover {
+        color: var(--dark);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        font-size: 0.9rem;
+        padding: 0.45rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: linear-gradient(135deg, #0f172a, #1d283a);
+        color: #e5e7eb;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.28);
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 36px rgba(15, 23, 42, 0.32);
+      }
+
+      /* Sections & animations scroll */
+      section {
+        padding: 2.8rem 1.5rem;
+        scroll-margin-top: 70px;
+      }
+
+      .section-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 0.4rem;
+        color: var(--dark);
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin-bottom: 2rem;
+      }
+
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s ease-out,
+          transform 0.7s ease-out;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hero modernisé */
+      .hero {
+        padding: 3.2rem 1.5rem 2.4rem;
+      }
+
+      .hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+        gap: 2.4rem;
+        align-items: center;
+      }
+
+      .hero-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.05);
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        margin-bottom: 0.6rem;
+        color: var(--muted);
+      }
+
+      .hero-pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          #fef9c3 0,
+          #22c55e 55%,
+          #15803d 100%
+        );
+        box-shadow: 0 0 0 2px rgba(220, 252, 231, 0.9);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.1rem, 3vw, 2.6rem);
+        margin-bottom: 0.7rem;
+        color: var(--dark);
+      }
+
+      .hero-highlight {
+        background: linear-gradient(120deg, #0f172a, #1d4ed8);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        margin-bottom: 1.3rem;
+        font-size: 0.98rem;
+        color: var(--muted);
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.4rem;
+        font-size: 0.8rem;
+      }
+
+      .hero-tag {
+        padding: 0.2rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        background: rgba(248, 250, 252, 0.9);
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.3rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.92rem;
+        text-align: center;
+        transition:
+          transform 0.18s ease-out,
+          box-shadow 0.18s ease-out,
+          background 0.2s ease-out;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #0f172a, #1d4ed8);
+        color: #e5e7eb;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.5);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 22px 55px rgba(15, 23, 42, 0.6);
+      }
+
+      .btn-secondary {
+        background: rgba(248, 250, 252, 0.85);
+        color: var(--dark);
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        box-shadow: 0 8px 18px rgba(148, 163, 184, 0.4);
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-1px);
+        background: #f9fafb;
+      }
+
+      .hero-sidebox {
+        background: rgba(248, 250, 252, 0.96);
+        border-radius: 24px;
+        padding: 1.6rem;
+        border: 1px solid rgba(148, 163, 184, 0.55);
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-sidebox::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top left,
+          rgba(59, 130, 246, 0.13),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .hero-sidebox h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        color: var(--dark);
+      }
+
+      .hero-sidebox ul {
+        list-style: none;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      .hero-sidebox li {
+        margin-bottom: 0.4rem;
+        display: flex;
+        gap: 0.35rem;
+        align-items: flex-start;
+      }
+
+      .hero-bullet {
+        margin-top: 0.25rem;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          #fee2e2 0,
+          #f97316 45%,
+          #b91c1c 100%
+        );
+      }
+
+      /* Cartes services */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: rgba(248, 250, 252, 0.96);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        box-shadow: var(--shadow-card);
+        position: relative;
+        overflow: hidden;
+        transform: translateY(0);
+        transition:
+          transform 0.18s ease-out,
+          box-shadow 0.18s ease-out;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        background: radial-gradient(
+          circle at top,
+          rgba(56, 189, 248, 0.06),
+          transparent 55%
+        );
+        transition: opacity 0.2s ease-out;
+        pointer-events: none;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+      }
+
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      .tagline {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #f97316;
+        margin-bottom: 0.55rem;
+      }
+
+      .card h3 {
+        font-size: 1.02rem;
+        margin-bottom: 0.4rem;
+        color: var(--dark);
+      }
+
+      .card p {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .card ul {
+        margin-top: 0.7rem;
+        padding-left: 1rem;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .card ul li {
+        margin-bottom: 0.25rem;
+      }
+
+      /* À propos */
+      .double-column {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 2.2rem;
+        align-items: start;
+      }
+
+      .about-box {
+        background: rgba(15, 23, 42, 0.96);
+        border-radius: var(--radius-lg);
+        padding: 1.6rem;
+        color: #e5e7eb;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .about-box p {
+        font-size: 0.92rem;
+        color: #e5e7eb;
+      }
+
+      .badge-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .badge {
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.7);
+      }
+
+      .about-points {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-left: 0.7rem;
+      }
+
+      .about-points li {
+        margin-bottom: 0.35rem;
+      }
+
+      /* Réalisations existantes (texte) */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.2rem;
+      }
+
+      .project {
+        background: rgba(248, 250, 252, 0.96);
+        border-radius: 14px;
+        padding: 1rem;
+        border: 1px dashed rgba(148, 163, 184, 0.7);
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .project-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--dark);
+      }
+
+      .project-meta {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-bottom: 0.5rem;
+      }
+
+      /* NOUVELLE GALERIE CHANTIERS */
+      .gallery-section {
+        background: radial-gradient(
+          circle at top,
+          #eff6ff 0,
+          #e5edf9 50%,
+          #e2e8f0 100%
+        );
+        border-top: 1px solid rgba(148, 163, 184, 0.35);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      }
+
+      .gallery-grid {
+        column-count: 3;
+        column-gap: 1.1rem;
+      }
+
+      .gallery-item {
+        display: inline-block;
+        width: 100%;
+        margin: 0 0 1.1rem;
+        break-inside: avoid;
+        background: rgba(248, 250, 252, 0.98);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        transform: translateY(0);
+        transition:
+          transform 0.2s ease-out,
+          box-shadow 0.2s ease-out;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 22px 55px rgba(15, 23, 42, 0.45);
+      }
+
+      .gallery-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        max-height: 260px;
+      }
+
+      .gallery-image {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        transform: scale(1.02);
+        transition:
+          transform 0.35s ease-out,
+          filter 0.35s ease-out;
+        filter: saturate(1.05) contrast(1.02);
+        backface-visibility: hidden; /* fix masonry hover bug [web:5] */
+        vertical-align: middle;
+      }
+
+      .gallery-item:hover .gallery-image {
+        transform: scale(1.06);
+        filter: saturate(1.15) contrast(1.06);
+      }
+
+      .gallery-badge {
+        position: absolute;
+        left: 0.75rem;
+        top: 0.75rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        background: rgba(15, 23, 42, 0.78);
+        color: #e5e7eb;
+      }
+
+      .gallery-content {
+        padding: 0.85rem 0.95rem 0.95rem;
+      }
+
+      .gallery-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--dark);
+      }
+
+      .gallery-meta {
+        font-size: 0.78rem;
+        color: #9ca3af;
+        margin-bottom: 0.35rem;
+      }
+
+      .gallery-comment {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        gap: 2rem;
+      }
+
+      form {
+        background: rgba(248, 250, 252, 0.98);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        box-shadow: var(--shadow-card);
+      }
+
+      label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.55rem 0.7rem;
+        margin-bottom: 0.9rem;
+        border-radius: 10px;
+        border: 1px solid rgba(148, 163, 184, 0.8);
+        font: inherit;
+        background: rgba(248, 250, 252, 0.96);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      footer {
+        background: transparent;
+        color: #e5e7eb;
+        padding: 1.4rem 1.5rem 1.8rem;
+        font-size: 0.82rem;
+      }
+
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .footer-links a {
+        margin-left: 1rem;
+        color: #cbd5f5;
+      }
+
+      .footer-links a:hover {
+        color: #facc15;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero-inner {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .double-column,
+        .contact-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .gallery-grid {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 640px) {
+        nav ul {
+          display: none;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero {
+          padding-top: 2.5rem;
+        }
+        .cards {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .grid-2 {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .gallery-grid {
+          column-count: 1;
+        }
+        .section-inner,
+        .hero-inner {
+          padding-inline: 0.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-inner blur-pills">
+        <header>
+          <div class="nav-container">
+            <div class="logo">
+              <div class="logo-mark"></div>
+              SP<span>AM</span>
+            </div>
+            <nav>
+              <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#galerie">Chantiers</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+            <a href="#contact" class="nav-cta">Demander un devis</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- HERO -->
+          <section id="accueil" class="hero">
+            <div class="hero-inner fade-in-up">
+              <div>
+                <div class="hero-pill">
+                  <div class="hero-pill-dot"></div>
+                  SPAM – Support Prestations Assistance Maintenance
+                </div>
+                <h1>
+                  Bricolage, bâtiment, informatique et
+                  <span class="hero-highlight">vidéosurveillance</span> avec un
+                  seul interlocuteur.
+                </h1>
+                <p>
+                  SPAM accompagne les particuliers et les entreprises pour des
+                  interventions du quotidien : réparatio et travaux,
+                  sous‑traitance multitechniques bâtiment, assistance
+                  informatique et installation de systèmes de vidéosurveillance,
+                  pour des lieux de vie et de travail fonctionnels et sécurisés.
+                </p>
+                <div class="hero-tags">
+                  <span class="hero-tag">Réparation à domicile</span>
+                  <span class="hero-tag">Sous‑traitance entreprises</span>
+                  <span class="hero-tag">Assistance informatique</span>
+                  <span class="hero-tag">Vidéosurveillance</span>
+                </div>
+                <div class="hero-buttons">
+                  <a href="#contact" class="btn btn-primary"
+                    >Demander un devis</a
+                  >
+                  <a href="#galerie" class="btn btn-secondary"
+                    >Voir les chantiers</a
+                  >
+                </div>
+              </div>
+              <aside class="hero-sidebox">
+                <h3>Interventions principales</h3>
+                <ul>
+                  <li>
+                    <span class="hero-bullet"></span>
+                    <span
+                      >Bricolage et petits travaux chez les particuliers</span
+                    >
+                  </li>
+                  <li>
+                    <span class="hero-bullet"></span>
+                    <span
+                      >Sous‑traitance et maintenance légère pour les
+                      entreprises</span
+                    >
+                  </li>
+                  <li>
+                    <span class="hero-bullet"></span>
+                    <span
+                      >Assistance informatique (PC, box, Wi‑Fi,
+                      périphériques)</span
+                    >
+                  </li>
+                  <li>
+                    <span class="hero-bullet"></span>
+                    <span
+                      >Installation et paramétrage de vidéosurveillance</span
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </section>
+
+          <!-- SERVICES -->
+          <section id="services">
+            <div class="section-inner fade-in-up">
+              <h2 class="section-title">Services SPAM</h2>
+              <p class="section-subtitle">
+                Une offre claire pour particuliers et professionnels, organisée
+                autour de quatre grands axes : support, prestation, assistance
+                et maintenance.
+                <!-- [web:10] -->
+              </p>
+
+              <div class="cards">
+                <div class="card">
+                  <div class="tagline">Particuliers</div>
+                  <h3>Bricolage & petits travaux</h3>
+                  <p>
+                    Interventions à domicile pour tous les petits travaux que
+                    vous n’avez pas le temps ou l’envie de faire vous‑même.
+                  </p>
+                  <ul>
+                    <li>Montage de meubles, pose de tringles et étagères</li>
+                    <li>Petits travaux de peinture et de réparation</li>
+                    <li>Entretien simple et petites finitions</li>
+                  </ul>
+                </div>
+
+                <div class="card">
+                  <div class="tagline">Professionnels</div>
+                  <h3>Sous‑traitance bâtiment</h3>
+                  <p>
+                    Renfort multiservices pour entreprises, commerces et petites
+                    structures, en complément de vos équipes ou prestataires
+                    habituels.
+                  </p>
+                  <ul>
+                    <li>Maintenance légère des locaux</li>
+                    <li>Petites réparations et ajustements</li>
+                    <li>Aménagement simple de bureaux et espaces de travail</li>
+                  </ul>
+                </div>
+
+                <div class="card">
+                  <div class="tagline">IT & sécurité</div>
+                  <h3>Informatique & vidéosurveillance</h3>
+                  <p>
+                    Assistance informatique de proximité et solutions de
+                    vidéosurveillance adaptées aux particuliers et petites
+                    structures.
+                  </p>
+                  <ul>
+                    <li>Installation PC, box, Wi‑Fi, imprimantes</li>
+                    <li>
+                      Aide à l’utilisation, sauvegardes, optimisation basique
+                    </li>
+                    <li>
+                      Installation et paramétrage de caméras et enregistreurs
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- GALERIE CHANTIERS -->
+          <section id="galerie" class="gallery-section">
+            <div class="section-inner fade-in-up">
+              <h2 class="section-title">Photos de chantiers</h2>
+              <p class="section-subtitle">
+                Une sélection de réalisations chez des particuliers et en
+                entreprise. Tu peux remplacer les images par tes propres photos
+                (juste changer les URLs).
+                <!-- [web:5][web:8] -->
+              </p>
+
+              <div class="gallery-grid">
+                <!-- Exemple 1 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <!-- Remplace l’URL par ta photo -->
+                    <img
+                      src="https://images.pexels.com/photos/6476584/pexels-photo-6476584.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Montage et aménagement d'un coin bureau"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Particulier</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">Coin bureau optimisé</div>
+                    <div class="gallery-meta">
+                      Salon transformé en espace de travail · 1/2 journée
+                    </div>
+                    <p class="gallery-comment">
+                      Montage du bureau, pose d’étagères murales, passage de
+                      câbles discret et mise en place du Wi‑Fi pour un espace
+                      plus propre et fonctionnel.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Exemple 2 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src="https://images.pexels.com/photos/5588860/pexels-photo-5588860.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Maintenance légère dans des bureaux"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Entreprise</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">Maintenance de bureaux</div>
+                    <div class="gallery-meta">
+                      Bureaux administratifs · Intervention régulière
+                    </div>
+                    <p class="gallery-comment">
+                      Remplacement de luminaires, petites réparations de
+                      cloisons, ajustement de mobilier et vérifications
+                      ponctuelles pour garder des locaux accueillants.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Exemple 3 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src="https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Installation de vidéosurveillance extérieure"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Vidéosurveillance</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">
+                      Surveillance maison individuelle
+                    </div>
+                    <div class="gallery-meta">
+                      Installation caméras extérieures · 1 journée
+                    </div>
+                    <p class="gallery-comment">
+                      Pose de caméras, installation d’un enregistreur,
+                      configuration de l’accès à distance et explication
+                      détaillée du fonctionnement au client.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Exemple 4 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src="https://images.pexels.com/photos/8092774/pexels-photo-8092774.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Bricolage et finitions dans un commerce"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Commerce</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">Finitions en boutique</div>
+                    <div class="gallery-meta">
+                      Boutique centre‑ville · 1 journée
+                    </div>
+                    <p class="gallery-comment">
+                      Retouches de peinture, pose d’étagères et ajustements de
+                      mobilier pour améliorer le parcours client sans fermer le
+                      commerce.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Exemple 5 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src="https://images.pexels.com/photos/5691623/pexels-photo-5691623.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Installation réseau simple"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Informatique</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">
+                      Postes de travail prêts à l’emploi
+                    </div>
+                    <div class="gallery-meta">Petite entreprise · 3 postes</div>
+                    <p class="gallery-comment">
+                      Installation d’ordinateurs, configuration de la box, Wi‑Fi
+                      et imprimante, mise en place de sauvegardes simples pour
+                      démarrer l’activité sereinement.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Exemple 6 -->
+                <article class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src="https://images.pexels.com/photos/6936172/pexels-photo-6936172.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Petits travaux de rénovation"
+                      class="gallery-image"
+                    />
+                    <span class="gallery-badge">Rénovation légère</span>
+                  </div>
+                  <div class="gallery-content">
+                    <div class="gallery-title">
+                      Remise au propre d’une pièce
+                    </div>
+                    <div class="gallery-meta">Particulier · Chambre</div>
+                    <p class="gallery-comment">
+                      Rebouchage de trous, ponçage léger, reprise de peinture et
+                      petits ajustements pour redonner un aspect propre à la
+                      pièce.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- RÉALISATIONS (texte) -->
+          <section id="realisations">
+            <div class="section-inner fade-in-up">
+              <h2 class="section-title">Exemples de réalisations</h2>
+              <p class="section-subtitle">
+                Quelques interventions typiques qui illustrent la manière dont
+                SPAM intervient chez les particuliers et pour les entreprises.
+              </p>
+
+              <div class="grid-2">
+                <div class="project">
+                  <div class="project-title">
+                    Montage & aménagement d’un coin bureau
+                  </div>
+                  <div class="project-meta">
+                    Particulier · Salon transformé en espace de travail
+                  </div>
+                  <p>
+                    Montage de bureau, pose d’étagères, passage de câbles et
+                    mise en place de la connexion internet pour un espace plus
+                    efficace.
+                  </p>
+                </div>
+
+                <div class="project">
+                  <div class="project-title">
+                    Maintenance légère dans des bureaux
+                  </div>
+                  <div class="project-meta">
+                    Entreprise · Bureaux administratifs
+                  </div>
+                  <p>
+                    Remplacement de luminaires, petites réparations de cloisons,
+                    ajustement de serrures et optimisation de quelques postes de
+                    travail.
+                  </p>
+                </div>
+
+                <div class="project">
+                  <div class="project-title">
+                    Installation de vidéosurveillance
+                  </div>
+                  <div class="project-meta">
+                    Particulier · Maison individuelle
+                  </div>
+                  <p>
+                    Pose de caméras extérieures, installation d’un enregistreur,
+                    configuration d’accès à distance depuis smartphone.
+                  </p>
+                </div>
+
+                <div class="project">
+                  <div class="project-title">
+                    Sous‑traitance multiservices pour commerce
+                  </div>
+                  <div class="project-meta">Professionnel · Boutique</div>
+                  <p>
+                    Petites réparations, retouches de peinture, ajustements de
+                    mobilier et vérifications régulières pour maintenir un lieu
+                    accueillant.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- À PROPOS -->
+          <section id="apropos">
+            <div class="section-inner double-column fade-in-up">
+              <div>
+                <h2 class="section-title">À propos de SPAM</h2>
+                <p class="section-subtitle">
+                  Un interlocuteur unique, polyvalent, pour vos besoins du
+                  quotidien : bricolage, bâtiment, informatique et
+                  vidéosurveillance.
+                </p>
+                <div class="about-box">
+                  <p>
+                    SPAM, Systèmes Polyvalents Aménagements Multiservices,
+                    accompagne ses clients dans la durée : bricolage à domicile,
+                    sous‑traitance bâtiment, assistance informatique et
+                    installation de systèmes de vidéosurveillance. L’objectif
+                    est de simplifier votre quotidien avec un prestataire unique
+                    capable d’intervenir sur plusieurs domaines avec la même
+                    exigence de qualité.
+                  </p>
+                  <div class="badge-list">
+                    <div class="badge">Réactivité</div>
+                    <div class="badge">Polyvalence</div>
+                    <div class="badge">Clarté des devis</div>
+                    <div class="badge">Proximité</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.6rem">
+                  Systèmes · Polyvalents · Aménagements
+                </h3>
+                <ul class="about-points">
+                  <li>
+                    <strong>Systèmes :</strong> assistance informatique,
+                    connexion internet, réseau simple, vidéosurveillance.
+                  </li>
+                  <li>
+                    <strong>Polyvalents :</strong> un prestataire capable
+                    d’intervenir chez les particuliers et en entreprise.
+                  </li>
+                  <li>
+                    <strong>Aménagements multiservices :</strong> entretien,
+                    petits travaux et amélioration des locaux et logements.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- CONTACT -->
+          <section id="contact">
+            <div class="section-inner contact-grid fade-in-up">
+              <div>
+                <h2 class="section-title">Contact & devis</h2>
+                <p class="section-subtitle">
+                  Expliquez votre besoin en quelques lignes, SPAM revient vers
+                  vous rapidement avec des précisions ou une proposition
+                  d’intervention.
+                </p>
+
+                <form>
+                  <label for="nom">Nom / Société</label>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    placeholder="Votre nom ou le nom de votre entreprise"
+                  />
+
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="votre@email.fr"
+                  />
+
+                  <label for="tel">Téléphone</label>
+                  <input
+                    type="tel"
+                    id="tel"
+                    name="tel"
+                    placeholder="Votre numéro de téléphone"
+                  />
+
+                  <label for="type">Type de demande</label>
+                  <select id="type" name="type">
+                    <option>Bricolage / particulier</option>
+                    <option>Sous‑traitance / entreprise</option>
+                    <option>Assistance informatique</option>
+                    <option>Vidéosurveillance</option>
+                    <option>Autre</option>
+                  </select>
+
+                  <label for="message">Votre message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Décrivez votre besoin, le lieu d’intervention et vos disponibilités."
+                  ></textarea>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="margin-top: 0.5rem"
+                  >
+                    Envoyer la demande
+                  </button>
+                </form>
+              </div>
+
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem">
+                  Informations pratiques
+                </h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.6rem">
+                  Zone d’intervention : à personnaliser (ex. : [Votre ville] et
+                  alentours).<br />
+                  Horaires : à indiquer (ex. : du lundi au vendredi, 9h – 18h,
+                  interventions possibles le samedi sur demande).
+                </p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.6rem">
+                  Téléphone : à compléter<br />
+                  Email : à compléter<br />
+                </p>
+                <p style="font-size: 0.9rem">
+                  Retrouvez SPAM sur les réseaux sociaux : Facebook, Instagram,
+                  LinkedIn, TikTok (liens à ajouter).
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          <div class="footer-inner">
+            <div>
+              © <span id="year"></span> SPAM – Systèmes Polyvalents Aménagements
+              Multiservices. Tous droits réservés.
+            </div>
+            <div class="footer-links">
+              <a href="#accueil">Haut de page</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Année automatique
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Animation simple au scroll avec IntersectionObserver (tendance, léger) [web:9]
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".fade-in-up")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
